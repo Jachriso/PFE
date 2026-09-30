@@ -8,12 +8,100 @@ Projet de fin d'études sur la précarité alimentaire étudiante.
 
 ## Sommaire
 
+0. [Bien démarrer avec Git](#0-bien-démarrer-avec-git)
 1. [Le projet](#1-le-projet)
 2. [Cahier des charges](#2-cahier-des-charges)
 3. [Organisation Git](#3-organisation-git)
 4. [Workflow de travail](#4-workflow-de-travail)
 5. [Conventions de commit](#5-conventions-de-commit)
 6. [Règles d'équipe](#6-règles-déquipe)
+
+---
+
+## 0. Bien démarrer avec Git
+
+### Installer Git
+
+- **Windows** : télécharger sur [git-scm.com](https://git-scm.com/downloads) (garder les options par défaut, ça installe aussi *Git Bash*).
+- **macOS** : `xcode-select --install` dans le terminal, ou `brew install git`.
+- **Linux** : `sudo apt install git`.
+
+Vérifier que c'est installé :
+
+```bash
+git --version
+```
+
+### Configurer son identité (une seule fois)
+
+Ces infos apparaissent sur chacun de tes commits. Utilise **le même e-mail que ton compte GitHub** :
+
+```bash
+git config --global user.name "Prénom Nom"
+git config --global user.email "ton.email@exemple.com"
+git config --global init.defaultBranch main
+```
+
+### Avoir accès au dépôt
+
+1. Créer un compte sur [github.com](https://github.com) si ce n'est pas déjà fait.
+2. Envoyer son pseudo GitHub à l'équipe pour être ajouté comme **collaborateur** du dépôt [Jachriso/PFE](https://github.com/Jachriso/PFE).
+3. Accepter l'invitation reçue par e-mail (ou dans les notifications GitHub).
+
+### Cloner le projet
+
+Cloner = télécharger le dépôt sur ton ordinateur, avec tout son historique. Place-toi dans le dossier où tu veux ranger le projet, puis :
+
+```bash
+git clone https://github.com/Jachriso/PFE.git
+cd PFE
+```
+
+> 💡 À la première commande `push`, GitHub te demandera de te connecter. Sur Windows, une fenêtre de connexion s'ouvre automatiquement. Sinon, crée un **token** dans *GitHub → Settings → Developer settings → Personal access tokens* et utilise-le à la place du mot de passe.
+
+> ⚠️ Évite de cloner le projet dans un dossier synchronisé (OneDrive, Google Drive, iCloud) : la synchronisation peut corrompre le dossier `.git`. Préfère par exemple `C:\dev\` ou `~/dev/`.
+
+### Récupérer la branche `dev`
+
+Après le clone, tu es sur `main`. Comme tout le travail part de `dev` :
+
+```bash
+git checkout dev
+git pull origin dev
+```
+
+Vérifier où tu en es à tout moment :
+
+```bash
+git status        # sur quelle branche je suis, quels fichiers ont changé
+git branch -a     # liste des branches locales et distantes
+git log --oneline # historique des commits
+```
+
+### Créer ta première branche
+
+```bash
+git checkout -b feature/front-page-accueil-prenom
+```
+
+Ensuite, suis le [workflow de travail](#4-workflow-de-travail) 👇
+
+### Les commandes à connaître
+
+| Commande | À quoi ça sert |
+|---|---|
+| `git clone <url>` | Télécharger le dépôt la première fois |
+| `git status` | Voir l'état de ses fichiers et sa branche actuelle |
+| `git checkout <branche>` | Changer de branche |
+| `git checkout -b <branche>` | Créer une branche et s'y placer |
+| `git pull` | Récupérer les dernières modifications du dépôt distant |
+| `git add <fichier>` / `git add .` | Préparer des fichiers pour le prochain commit |
+| `git commit -m "message"` | Enregistrer les modifications préparées |
+| `git push` | Envoyer ses commits sur GitHub |
+| `git merge <branche>` | Intégrer une autre branche dans la branche actuelle |
+| `git stash` / `git stash pop` | Mettre de côté ses modifs pour changer de branche, puis les récupérer |
+
+> 💡 Si tu préfères une interface graphique : l'onglet *Source Control* de VS Code ou [GitHub Desktop](https://desktop.github.com) font tout ça en quelques clics.
 
 ---
 
